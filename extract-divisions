@@ -1,0 +1,22 @@
+#! /usr/bin/python
+
+import re
+
+f = open("drd964x.pdsi.txt", "r")
+f_out = None
+current_division_id = None
+for line in f:
+    m = re.match(r'(\d{6})(\d{4})\s+(.*)$', line)
+    if m:
+        division_id = m.group(1)
+        year = m.group(2)
+        data = m.group(3)
+        if division_id != current_division_id:
+            if f_out is not None:
+                f_out.close()
+            f_out = open("divisions/pdsi/%s.txt" % division_id, "w")
+        f_out.write("%s %s\n" % (year, data))
+        current_division_id = division_id
+if f_out is not None:
+    f_out.close()
+f.close()
