@@ -1,4 +1,4 @@
-window.multigraph.adapters['ncdc-divisional-drought'] = {
+window.multigraph.adapters['drought'] = {
 
     textToStringArray : function (dataVariables, text) {
 
