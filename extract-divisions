@@ -10,12 +10,12 @@ for line in f:
     if m:
         division_id = m.group(1)
         year = m.group(2)
-        data = m.group(3)
+        values = re.split(r'\s+', m.group(3).strip())
         if division_id != current_division_id:
             if f_out is not None:
                 f_out.close()
             f_out = open("divisions/pdsi/%s.txt" % division_id, "w")
-        f_out.write("%s %s\n" % (year, data))
+        f_out.write("%s,%s\n" % (year, ",".join(values)))
         current_division_id = division_id
 if f_out is not None:
     f_out.close()
