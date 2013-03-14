@@ -1,4 +1,4 @@
-window.multigraph.adapters['drought'] = {
+window.multigraph.adapters['drought-pdsi'] = {
 
     textToStringArray : function (dataVariables, text) {
 
